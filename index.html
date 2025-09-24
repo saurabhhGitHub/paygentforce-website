@@ -42,18 +42,16 @@
         header {
             padding: 2.5rem 0 1.5rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: space-between;
         }
 
         .logo {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            background: var(--color-surface);
-            padding: 1rem 1.5rem;
+            padding: 0rem 0rem;
             border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(10, 38, 98, 0.08);
         }
 
         .logo img {
@@ -91,13 +89,14 @@
         }
 
         .hero {
-            display: grid;
+            display: flex;
             gap: 1.5rem;
         }
 
         .hero p {
             font-size: 1.05rem;
             color: rgba(18, 34, 53, 0.88);
+            min-width: 100vw;
         }
 
         .hero .cta {
@@ -125,7 +124,8 @@
         }
 
         .two-column {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 1.5rem;
         }
 
@@ -135,12 +135,18 @@
         }
 
         .diagram-card {
-            background: #0f172a;
+            background: #ffffff;
             border-radius: 18px;
             padding: 1.5rem;
         }
 
-        .diagram-card figcaption {
+        .diagram-cards {
+            background: #1a1a1a;
+            border-radius: 18px;
+            padding: 1.5rem;
+        }
+
+        s .diagram-card figcaption {
             margin-top: 0.75rem;
             color: rgba(255, 255, 255, 0.72);
             font-size: 0.95rem;
@@ -209,61 +215,40 @@
 <body>
     <header>
         <div class="logo" aria-label="PaygentForce logo">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%20Sep%2024%2C%202025%2C%2002_08_30%20PM-Xkb0pkwxUz2dq1zjn1Yi9Cg6ScnWIG.png"
-                alt="PaygentForce logo featuring a blue robot mascot" />
-            <span style="font-size: small;">Powered by</span>
-            <img src="https://www.vanshiv.com/images/logo1.png" alt="">
+            <img class="logo" src="./logo.png" alt="PaygentForce logo featuring a blue robot mascot" />
+            <h1>PaygentForce - A Slack- powered Payments framework for AgentForce, powered by Google A2A & AP2 Protocols
+            </h1>
         </div>
     </header>
 
     <main>
         <section class="hero">
             <div>
-                <h1>AI-Powered Payment Collection for Modern Finance Teams</h1>
-                <p>
-                    PaygentForce connects Slack, Salesforce, Stripe, and more to automate invoice tracking and payment
-                    collection.
-                    Reduce manual work, accelerate cash flow, and keep your entire revenue workflow transparent in real
-                    time.
-                </p>
-            </div>
-            <div>
-                <p>
-                    Ask for invoice status, trigger collections, and notify your team without leaving Slack.
-                    PaygentForce handles
-                    the heavy lifting—checking pre-mandates, coordinating approvals, and logging every update back into
-                    Salesforce.
-                </p>
+                PaygentForce is a Slack-powered Payments framework for Agentforce, powered by Google A2A
+                (Agent2Agent) and AP2 (Agent Payments Protocol) - created by <a
+                    href="https://www.linkedin.com/in/saurabh-kumar-vanshiv/">Saurabh Kumar</a> & <a
+                    href="https://www.linkedin.com/in/ca-ankur-sharma/">Ankur Sharma</a> for the
+                Dreamforce 2025 hackathon. It’s a solution built natively on Salesforce stack - leverages Slack,
+                Agentforce, Salesforce Core & Heroku. <br> <br> <br>
+                The true power of Agentforce can be leveraged in a multi-agent scenario - Google launched <a
+                    href="https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/">A2A (Agent
+                    to Agent protocol)</a> earlier this year and they launched <a
+                    href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol">AP2
+                    (Agent Payment Protocol)</a> on 17th
+                September. We studied AP2 and A2A deeply in the last few days to come up with PaygentForce so it can
+                serve as the goto framework for Agentforce powered payments which can be triggered by Slack.
+                A simple scenario - an invoice is due for collection and you want Agentforce to collect it - it
+                could be from a payment agent such as Stripe, Chargent, Adyen - let PaygentForce handle that for
+                you.
             </div>
         </section>
 
         <section>
             <h2>How PaygentForce Works</h2>
-            <div class="two-column">
-                <div>
-                    <h3>Step 1 · Ask in Slack</h3>
-                    <p>
-                        Finance teams message PaygentForce with an invoice ID. Instantly receive account details,
-                        invoice status,
-                        and a pre-mandate check within the same conversation.
-                    </p>
-                    <h3>Step 2 · Collect or Close</h3>
-                    <p>
-                        Choose whether to collect payment immediately. If the pre-mandate is approved, PaygentForce
-                        completes the
-                        payment automatically. Otherwise, a one-click approval email is sent to the customer.
-                    </p>
-                </div>
-                <div>
-                    <h3>Step 3 · Notifications & Updates</h3>
-                    <p>
-                        Every action is captured in your <strong>#payment-agent-notification</strong> channel.
-                        Salesforce is updated
-                        in real time— invoice status, pre-mandate flags, and customer approvals stay in sync without
-                        extra work.
-                    </p>
-                </div>
-            </div>
+            <figure class="diagram-card">
+                <img src="./works.png"
+                    alt="Architecture diagram showing PaygentForce connecting Slack, Salesforce, Stripe, and AP2 protocol" />
+            </figure>
         </section>
 
         <section>
@@ -271,21 +256,24 @@
             <div class="two-column">
                 <div>
                     <p>
-                        PaygentForce orchestrates secure payments across your stack using the AP2 protocol. It lives on
-                        Heroku, talks
-                        to Salesforce for data, stores state in PostgreSQL, and handles transactions through Stripe—with
-                        the A2A layer
-                        ensuring trusted communication.
+                        PaygentForce is 100% native to Salesforce - built on Slack, Agentforce, Salesforce core and
+                        Heroku.
+                        It archives standardisation and flexibility by following the latest AI Agent standards defined
+                        by
+                        Google and adopted by Salesforce
                     </p>
                     <ul>
-                        <li><strong>Slack</strong> &mdash; your control center for starting every workflow.</li>
-                        <li><strong>AP2 protocol</strong> &mdash; secure agent-to-agent transaction standard.</li>
-                        <li><strong>Heroku-hosted PaygentForce</strong> &mdash; coordinates data and actions.</li>
-                        <li><strong>Webhook integrations</strong> &mdash; keep every system aligned in real time.</li>
+
+                        <li><strong>Slack -</strong> Trigger payments for any transaction.</li>
+                        <li><strong>A2A -</strong> Used for Agentforce to Payment Agent communication.</li>
+                        <li><strong>AP2 -</strong> Used for triggering payments in an A2A scenario.</li>
+                        <li><strong>Heroku -</strong> Middleware for data and actions.</li>
+                        <li><strong>Webhook integrations -</strong> Real Time Data transfer between multiple system.
+                        </li>
                     </ul>
                 </div>
-                <figure class="diagram-card">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Final.drawio-74ZdLGRpMVWpbJyXj6Ld9e5mNowYOU.png"
+                <figure class="diagram-cards">
+                    <img src="./system.png"
                         alt="Architecture diagram showing PaygentForce connecting Slack, Salesforce, Stripe, and AP2 protocol" />
                     <figcaption>
                         PaygentForce automates the end-to-end payment journey across your finance stack.
@@ -324,7 +312,7 @@
                 strategic
                 work while our intelligent agent manages the invoice lifecycle from request to reconciliation.
             </p>
-            <p>Email <strong>hello@paygentforce.com</strong> to request a guided tour.</p>
+            <p>Email <strong>hello@PaygentForce.com</strong> to request a guided tour.</p>
         </section>
     </main>
 
