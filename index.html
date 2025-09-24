@@ -142,9 +142,9 @@
         }
 
         .diagram-cards {
-            background: #1a1a1a;
+            background: #000000;
             border-radius: 18px;
-            padding: 1.5rem;
+            padding: 0.5rem;
         }
 
         s .diagram-card figcaption {
@@ -223,7 +223,8 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section>
+            <h2>Introduction</h2>
             <div>
                 PaygentForce is a Slack-powered Payments framework for Agentforce, powered by Google A2A
                 (Agent2Agent) and AP2 (Agent Payments Protocol) - created by <a
@@ -242,6 +243,19 @@
                 could be from a payment agent such as Stripe, Chargent, Adyen - let PaygentForce handle that for
                 you.
             </div>
+            <div style="display: flex; flex-direction: row;">
+                <img src="./a2a.png"
+                width="500rem"
+                height="auto"
+                style="object-fit: cover;"
+                    alt="Architecture diagram showing PaygentForce connecting Slack, Salesforce, Stripe, and AP2 protocol" />
+                <img src="./ap2.png"
+                width="500rem"
+                height="auto"
+                        style="object-fit: contain;"
+                    alt="Architecture diagram showing PaygentForce connecting Slack, Salesforce, Stripe, and AP2 protocol" />
+            </div>
+
         </section>
 
         <section>
@@ -284,6 +298,31 @@
         </section>
 
         <section>
+            <h2>Why We Built PaygentForce for DF’25 Hackathon?</h2>
+            <div>
+                The AI Agent space is evolving rapidly and there is a need to define a robust framework on how
+                Agentforce should do payments when interacting with other agents. Since it’s triggered via Slack - which
+                is accessible to all & the architecture is based on open standards which are well adopted - A2A & AP2,
+                we believe there is huge potential to expand Paygentforce to serve as the baseline semantic layer for
+                Salesforce Payments on Agentforce.
+            </div>
+        </section>
+
+        <section>
+            <h2>The Road Ahead!</h2>
+            <div>
+                For now, we’ll anxiously await the fate of PaygentForce in the Dreamforce hackathon (please wish us
+                luck!) - but in the longer run, we’re hoping to expand this project to build accelerators
+            </div>
+            <ul>
+                <li>Show PaygentForce working with sample payment agents as Stripe, Chargent and others </li>
+                <li>Enhanced Guardrails in Agentforce for payment approvals</li>
+                <li>Expand PaygentForce to be a multi-modal framework which can be accessed through not just Slack but
+                    also native Salesforce Mobile app & via Mobile SDK</li>
+            </ul>
+        </section>
+
+        <!-- <section>
             <h2>Why Teams Love PaygentForce</h2>
             <div class="feature-grid">
                 <div class="feature-item">
@@ -314,7 +353,7 @@
                 work while our intelligent agent manages the invoice lifecycle from request to reconciliation.
             </p>
             <p>Email <strong>hello@PaygentForce.com</strong> to request a guided tour.</p>
-        </section>
+        </section> -->
     </main>
 
     <footer>
